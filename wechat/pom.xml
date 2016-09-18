@@ -1,0 +1,64 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>cn.sh.outer</groupId>
+  <artifactId>outerProject</artifactId>
+  <packaging>war</packaging>
+  <version>1.0</version>
+  <name>outerProject Maven Webapp</name>
+  <repositories>
+    <!--<repository>-->
+    <!--<id>spring-snapshots</id>-->
+    <!--<url>http://maven.oschina.net/content/groups/public/</url>-->
+    <!--<snapshots>-->
+    <!--<enabled>true</enabled>-->
+    <!--</snapshots>-->
+    <!--</repository>-->
+    <!--<repository>
+      <id>springsource-repos</id>
+      <name>SpringSource Repository</name>
+      <url>http://repo.spring.io/release/</url>
+    </repository>-->
+    <repository>
+      <id>central-repos</id>
+      <name>Central Repository</name>
+      <url>http://repo.maven.apache.org/maven2</url>
+    </repository>
+    <repository>
+      <id>central-repos2</id>
+      <name>Central Repository 2</name>
+      <url>http://repo1.maven.org/maven2/</url>
+    </repository>
+  </repositories>
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.12</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.shiro</groupId>
+      <artifactId>shiro-core</artifactId>
+      <version>1.2.3</version>
+    </dependency>
+    <dependency>
+      <groupId>commons-logging</groupId>
+      <artifactId>commons-logging</artifactId>
+      <version>1.1.1</version>
+    </dependency>
+    <dependency>
+      <groupId>mysql</groupId>
+      <artifactId>mysql-connector-java</artifactId>
+      <version>5.1.25</version>
+    </dependency>
+    <dependency>
+      <groupId>com.alibaba</groupId>
+      <artifactId>druid</artifactId>
+      <version>1.0.15</version>
+    </dependency>
+  </dependencies>
+  <build>
+    <finalName>outerProject</finalName>
+  </build>
+</project>
