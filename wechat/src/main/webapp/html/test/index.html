@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>index</title>
+    <script src="../../js/angular.js"></script>
+    <script src="../../js/angular-ui-router.js"></script>
+</head>
+<body>
+<div ng-app="myApp">
+    <a ui-sref="index">show index</a>
+    <a ui-sref="other">show other</a>
+    <a ui-sref="index.content1">content111111</a>
+    <a ui-sref="other.content2">content222222</a>
+    <div ui-view="index"></div>
+    <div ui-view="other">
+    </div>
+</div>
+</body>
+
+<script type="text/javascript">
+    var app = angular.module('myApp', ['ui.router']);
+    app.config(["$stateProvider", function ($stateProvider) {
+        $stateProvider
+                .state("index", {
+                    url: '/index',
+                    views: {
+                        'index': {template: "<div><div ui-view='header'></div>  <div ui-view='nav'></div> <div ui-view='body'></div>  </div>"},
+                        //这里必须要绝对定位
+                        'header@index': {template: "<div>头部内容header</div>"},
+                        'nav@index': {template: "<div>菜单内容nav</div>"},
+                        'body@index': {template: "<div>展示内容contents</div>"}
+                    }
+                })
+                .state("other", {
+                    url: '/other',
+                    views: {
+                        'other': {template: "<div> --<div ui-view='body'></div>--  </div>"},
+                        'body@other': {template: "<div>other333333333333333333</div>"}
+                        //'body@index'表时名为body的view使用index模板
+                    }
+                })
+                //绝对定位
+                .state("index.content1", {
+                    url: '/content1',
+                    views: {
+                        'body@index': {template: "<div>content11111111111111111</div>"}
+                        //'body@index'表时名为body的view使用index模板
+                    }
+                })
+                //相对定位：该状态的里的名为body的ui-view为相对路径下的（即没有说明具体是哪个模板下的）
+                .state("other.content2", {
+                    url: '/content2',
+                    views: {
+                        'body@other': {template: "<div>content2222222222222222222</div>"}//
+                    }
+                })
+
+    }]);
+
+</script>
+</html>

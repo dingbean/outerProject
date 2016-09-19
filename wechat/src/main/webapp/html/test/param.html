@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>index</title>
+    <script src="../../js/angular.js"></script>
+    <script src="../../js/angular-ui-router.js"></script>
+</head>
+<body >
+<div ng-app="myApp" >
+    <a ui-sref="index({id:30})">show index</a>
+    <a ui-sref="test({username:'peter'})">show test</a>
+    <div ui-view></div>
+</div>
+</body>
+
+<script type="text/javascript">
+    var app = angular.module('myApp', ['ui.router']);
+    app.config(["$stateProvider",  function ($stateProvider) {
+        $stateProvider
+                .state("home", {
+                    url: '/',
+                    template:"<div>homePage</div>"
+
+                })
+                .state("index", {
+                    url: '/index/:id',
+                    template:"<div>indexcontent</div>",
+                    controller:function($stateParams){
+                        alert($stateParams.id)
+                    }
+                })
+                .state("test", {
+                    url: '/test/:username',
+                    template:"<div>testContent</div>",
+                    controller:function($stateParams){
+                        alert($stateParams.username)
+                    }
+                })
+
+    }]);
+
+</script>
+</html>
