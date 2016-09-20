@@ -53,8 +53,6 @@
                         <value>text/plain;charset=UTF-8</value>
                     </list>
                 </property>
-
-
                 <property name="features" >
                     <list>
                         <value>WriteMapNullValue</value>
