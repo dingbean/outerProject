@@ -1,6 +1,4 @@
-import org.apache.commons.httpclient.HttpClient;
-import org.apache.commons.httpclient.HttpMethod;
-import org.apache.commons.httpclient.NameValuePair;
+import org.apache.commons.httpclient.*;
 import org.apache.commons.httpclient.methods.PostMethod;
 
 import java.io.BufferedReader;
@@ -19,18 +17,22 @@ import java.util.Map;
  */
 public class ThreadTest implements Runnable {
 
-    public void postMethod(String url) throws IOException{
-        HttpClient client = new HttpClient();
+    private HttpClient client;
+    public ThreadTest(HttpClient client){
+        this.client = client;
+    }
+
+    /*public void postMethod(String url) throws IOException{
         PostMethod post = new PostMethod(url);
         try {
-            client.executeMethod(post);
+            int statusCode = client.executeMethod(post);
+            System. out.println( "_______====statusCode=" + statusCode );
             post.releaseConnection();
+
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-
+    }*/
 
     public void run() {
 
@@ -38,11 +40,21 @@ public class ThreadTest implements Runnable {
 //        for (int i = 0; i < 100; i++) {
             System.out.println("===========");
             try {
-                postMethod("http://localhost:8081/wechat/wx/controller");
-            } catch (IOException e) {
+                int statusCode=0;
+                System. out.println( "url====http://localhost:8080/wechat/wx/controller"  );
+                PostMethod postMethod = new PostMethod("http://localhost:8080/wechat/wx/controller");
+
+                    statusCode = client.executeMethod(postMethod);
+                    System. out.println( "_______sleep" + statusCode );
+//                    Thread. sleep(3000);//10s
+                    postMethod.releaseConnection();
+
+//                PostMethodTest pmt = new PostMethodTest();
+//                pmt.postMethod("http://localhost:8080/wechat/wx/controller");
+            } catch (Exception e) {
                 e.printStackTrace();
             }
-            System.out.println("+++++++++++");
+        System.out.println("+++++++++++");
 
 //        }
     }

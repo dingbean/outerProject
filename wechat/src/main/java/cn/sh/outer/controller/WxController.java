@@ -22,7 +22,8 @@ public class WxController {
 
     @RequestMapping(value = "/controller")
     @ResponseBody
-    public void testController(HttpServletRequest request){
+    public String testController(HttpServletRequest request){
         System.out.println("idNum=" + IdGenerate.getIdNum());
+        return "200";
     }
 }
