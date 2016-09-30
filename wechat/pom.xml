@@ -227,6 +227,16 @@
       <filter>src/main/resources/conf/${env}/app-${env}.properties</filter>
       <filter>src/main/resources/conf/${env}/jdbc-${db}-${env}.properties</filter>
     </filters>
+    <plugins>
+      <!--跳过test begin-->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <configuration>
+          <skip>true</skip>
+        </configuration>
+      </plugin>
+    </plugins>
   </build>
   <profiles>
     <profile>
