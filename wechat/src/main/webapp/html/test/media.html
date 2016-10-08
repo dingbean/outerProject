@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="../../js/angular.js"></script>
+    <script src="../../js/test/media.js"></script>
+    <title>media</title>
+</head>
+<body ng-app="myApp">
+<div ng-controller="myCtrl">
+    <hello>
+        <div>嵌套内容</div>
+    </hello>
+    <loader howToLoad="loadData()">弹出指令</loader>
+    <hello>
+        <div>独立scope作用域</div>
+    </hello>
+</div>
+<div>------------ 分割线 ------------</div>
+<div ng-controller="myCtrl2">
+    <hello>
+        <div>嵌套内容</div>
+    </hello>
+    <loader howToLoad="loadData2()">弹出指令</loader>
+</div>
+<div>------------ 分割线 ------------</div>
+<div ng-controller="myCtrl3">
+    <!--<drink flavor="{{ ctrlFlavor }}"></drink><br/>-->
+    <input type="text" ng-model="ctrlFlavor"/><br/><br/>
+    ----
+    <drinkin flavor="ctrlFlavor"></drinkin>
+
+    <greeting greet="sayHello(name)"></greeting>
+</div>
+</body>
+</html>

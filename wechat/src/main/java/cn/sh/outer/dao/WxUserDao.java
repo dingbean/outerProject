@@ -1,10 +1,10 @@
 package cn.sh.outer.dao;
 
-import cn.sh.outer.model.QQBean;
+import cn.sh.outer.model.WxUser;
 
 import java.io.Serializable;
 
 
-public interface WxUserDao extends GenericDao<QQBean, Serializable>  {
+public interface WxUserDao extends GenericDao<WxUser, Serializable>  {
 	
 }

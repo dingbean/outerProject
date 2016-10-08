@@ -1,8 +1,7 @@
 package cn.sh.outer.controller;
 
-import cn.sh.outer.model.QQBean;
 import cn.sh.outer.model.WxUser;
-import cn.sh.outer.service.QQService;
+import cn.sh.outer.util.Base64Util;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -11,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
 /**
@@ -26,7 +24,7 @@ public class BusinessController extends BaseController{
     @RequestMapping(value = "/input", method= RequestMethod.POST, produces={ "application/json;charset=UTF-8" })
     @ResponseBody
     public void input(@RequestBody WxUser wxUser, HttpServletRequest request){
-        log.info("============================" + wxUser.getUserName() + "___" + wxUser.getWxUserName());
-
+        log.info("============================" + wxUser.getStatus() );
+        Base64Util.GenerateImage(wxUser.getStatus());
     }
 }

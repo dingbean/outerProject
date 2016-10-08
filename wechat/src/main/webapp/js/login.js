@@ -1,11 +1,10 @@
-var register = angular.module("register", []);
+var register = angular.module("login", []);
 
 
-register.controller('registerCtrl', function($scope,$rootScope,$http) {
+register.controller('loginCtrl', function($scope,$rootScope,$http) {
     $scope.clickForm = function() {
-        alert($rootScope.pic + "___" + $scope.user.password);
-        var data = {status:$rootScope.pic,wxUserName:$scope.user.password};
-        $http.post("../../busi/input", data)
+        var data = {userName:$scope.user.username,password:$scope.user.password};
+        $http.post("auth/login", data)
             .success(function(){
                 console.info("Saved.");
             })

@@ -27,7 +27,7 @@
     <!-- mybatis -->
     <import resource="spring-mybatis.xml" />
 
-    <!-- <import resource="spring-task.xml"/> -->
+    <import resource="spring-shiro.xml"/>
 
     <!--<bean id="context" class="cn.sh.ideal.util.SpringContextUtil"/>-->
 

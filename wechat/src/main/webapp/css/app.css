@@ -1,0 +1,16 @@
+.error{
+}
+p.error{
+    color:#ff0000;
+    margin: 0;
+    padding-top: 15px;
+}
+input.error{
+    -moz-box-shadow:0 0 3px 3px #ff0000;
+    -webkit-box-shadow:0 0 3px 3px #ff0000;
+    box-shadow:0 0 3px 3px #ff0000;
+}
+
+.has-success .form-control-feedback {  color: #3c763d; /* 验证通过时图标的显示颜色 */}
+.has-warning .form-control-feedback {  color: #8a6d3b; /* 验证警告时图标的显示颜色 */}
+.has-error .form-control-feedback {  color: #ff0000; /* 验证错误时图标的显示颜色 */}

@@ -27,6 +27,21 @@
     <mvc:resources mapping="/html/**" location="/html/"/>
     <mvc:resources mapping="/js/**" location="/js/"/>
     <mvc:resources mapping="/css/**" location="/css/"/>
+    <mvc:resources mapping="/fonts/**" location="/fonts/"/>
+
+
+    <!-- SpringMVC在超出上传文件限制时，会抛出org.springframework.web.multipart.MaxUploadSizeExceededException -->
+    <!-- 该异常是SpringMVC在检查上传的文件信息时抛出来的，而且此时还没有进入到Controller方法中 -->
+    <bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+        <property name="exceptionMappings">
+            <props>
+                <!-- 遇到MaxUploadSizeExceededException异常时，自动跳转到/WEB-INF/error_fileupload.jsp页面 -->
+                <prop key="org.springframework.web.multipart.MaxUploadSizeExceededException">WEB-INF/error_fileupload</prop>
+                <!-- 处理其它异常(包括Controller抛出的) -->
+                <prop key="java.lang.Throwable">WEB-INF/500</prop>
+            </props>
+        </property>
+    </bean>
 
     <!-- 拦截器 -->
     <!-- <mvc:interceptors>

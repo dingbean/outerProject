@@ -13,6 +13,8 @@ public class WxUser {
 
     private String userName;
 
+    private String password;
+
     private String status;
 
     private String createTime;
@@ -73,5 +75,13 @@ public class WxUser {
 
     public void setUpdateTime(String updateTime) {
         this.updateTime = updateTime;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }
