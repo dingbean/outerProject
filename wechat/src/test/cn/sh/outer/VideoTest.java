@@ -9,20 +9,20 @@ import java.io.File;
 public class VideoTest {
     @Test
     public void test1(){
-        File source = new File("E:\\jar\\t1.mp4");
-        File target = new File("E:\\jar\\target3.flv");
+        File source = new File("E:\\jar\\avitest.avi");
+        File target = new File("E:\\jar\\target6.3gp");
         AudioAttributes audio = new AudioAttributes();
-        audio.setCodec("libmp3lame");
-        audio.setBitRate(new Integer(64000));
-        audio.setChannels(new Integer(1));
-        audio.setSamplingRate(new Integer(22050));
+        audio.setCodec("libfaac");
+        audio.setBitRate(new Integer(128000));
+        audio.setSamplingRate(new Integer(44100));
+        audio.setChannels(new Integer(2));
         VideoAttributes video = new VideoAttributes();
-        video.setCodec("flv");
-        video.setBitRate(new Integer(500000));
-        video.setFrameRate(new Integer(30));
-        video.setSize(new VideoSize(400, 300));
+        video.setCodec("mpeg4");
+        video.setBitRate(new Integer(160000));
+        video.setFrameRate(new Integer(50));
+        video.setSize(new VideoSize(176, 144));
         EncodingAttributes attrs = new EncodingAttributes();
-        attrs.setFormat("flv");
+        attrs.setFormat("3gp");
         attrs.setAudioAttributes(audio);
         attrs.setVideoAttributes(video);
         Encoder encoder = new Encoder();

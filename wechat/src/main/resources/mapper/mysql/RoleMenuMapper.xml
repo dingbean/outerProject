@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.sh.ideal.manager.dao.RoleMenuDao">
+    <resultMap id="CascadeResultMap" type="cn.sh.outer.model.security.ResourceMenu">
+        <id column="ID" property="id" jdbcType="DECIMAL"/>
+        <result column="PARENT_ID" property="parentId" jdbcType="DECIMAL"/>
+        <result column="PARENT_IDS" property="parentIds" jdbcType="VARCHAR"/>
+        <result column="NAME" property="name" jdbcType="VARCHAR"/>
+        <result column="SORT" property="sort" jdbcType="DECIMAL"/>
+        <result column="HREF" property="href" jdbcType="VARCHAR"/>
+        <result column="TARGET" property="target" jdbcType="VARCHAR"/>
+        <result column="ICON" property="icon" jdbcType="VARCHAR"/>
+        <result column="IS_SHOW" property="isShow" jdbcType="VARCHAR"/>
+        <result column="PERMISSION" property="permission" jdbcType="VARCHAR"/>
+        <result column="CREATER" property="creater" jdbcType="VARCHAR"/>
+        <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP"/>
+        <result column="UPDATER" property="updater" jdbcType="VARCHAR"/>
+        <result column="UPDATE_TIME" property="updateTime" jdbcType="TIMESTAMP"/>
+        <result column="REMARK" property="remark" jdbcType="VARCHAR"/>
+        <result column="STATUS" property="status" jdbcType="VARCHAR"/>
+        <association property="parent" column="PARENT_ID" select="getMenuById"/>
+        <collection property="children" column="ID" select="getChildrenMenus"/>
+    </resultMap>
+    <resultMap id="BaseResultMap" type="cn.sh.outer.model.security.ResourceMenu">
+        <id column="ID" property="id" jdbcType="DECIMAL"/>
+        <result column="PARENT_ID" property="parentId" jdbcType="DECIMAL"/>
+        <result column="PARENT_IDS" property="parentIds" jdbcType="VARCHAR"/>
+        <result column="NAME" property="name" jdbcType="VARCHAR"/>
+        <result column="SORT" property="sort" jdbcType="DECIMAL"/>
+        <result column="HREF" property="href" jdbcType="VARCHAR"/>
+        <result column="TARGET" property="target" jdbcType="VARCHAR"/>
+        <result column="ICON" property="icon" jdbcType="VARCHAR"/>
+        <result column="IS_SHOW" property="isShow" jdbcType="VARCHAR"/>
+        <result column="PERMISSION" property="permission" jdbcType="VARCHAR"/>
+        <result column="CREATER" property="creater" jdbcType="VARCHAR"/>
+        <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP"/>
+        <result column="UPDATER" property="updater" jdbcType="VARCHAR"/>
+        <result column="UPDATE_TIME" property="updateTime" jdbcType="TIMESTAMP"/>
+        <result column="REMARK" property="remark" jdbcType="VARCHAR"/>
+        <result column="STATUS" property="status" jdbcType="VARCHAR"/>
+        <collection property="children" column="ID" select="getChildrenMenus"/>
+    </resultMap>
+
+    <resultMap id="RoleResultMapper" type="role">
+        <id column="ID" property="id" jdbcType="DECIMAL"/>
+        <result column="ROLE_NAME" property="roleName" jdbcType="VARCHAR"/>
+        <result column="ROLE_CODE" property="roleCode" jdbcType="VARCHAR"/>
+        <result column="STATUS" property="status" jdbcType="VARCHAR"/>
+        <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP"/>
+        <result column="UPDATE_TIME" property="updateTime" jdbcType="TIMESTAMP"/>
+
+    </resultMap>
+
+    <select id="getChildrenMenus" parameterType="int" resultMap="BaseResultMap">
+        SELECT * from T_MENU WHERE PARENT_ID = #{id} and STATUS ='1' and IS_SHOW = '1'
+    </select>
+    <select id="getMenuById" parameterType="int" resultMap="BaseResultMap">
+        SELECT * from T_MENU WHERE ID = #{id}
+    </select>
+
+
+    <insert id="insetMenu" parameterType="cn.sh.outer.model.security.ResourceMenu" useGeneratedKeys="true" keyProperty="id">
+        insert into T_MENU ( PARENT_ID, PARENT_IDS,
+        NAME, SORT, HREF,TARGET,ICON,IS_SHOW,PERMISSION,CREATER,CREATE_TIME,UPDATER,UPDATE_TIME,REMARK,
+        STATUS
+        )
+        values (#{parentId,jdbcType=DECIMAL},
+        #{parentIds,jdbcType=VARCHAR},
+        #{name,jdbcType=VARCHAR}, #{sort,jdbcType=DECIMAL},#{href,jdbcType=VARCHAR},#{target,jdbcType=VARCHAR},
+        #{icon,jdbcType=VARCHAR},#{isShow,jdbcType=VARCHAR},#{permission,jdbcType=VARCHAR},#{creater,jdbcType=VARCHAR},
+        now(),#{updater,jdbcType=VARCHAR},
+        now(),#{remark,jdbcType=VARCHAR},#{status,jdbcType=VARCHAR}
+        )
+    </insert>
+    <update id="updateMenu" parameterType="cn.sh.outer.model.security.ResourceMenu">
+        UPDATE T_MENU
+        <set>
+            <if test="parentId >= 0">
+                PARENT_ID = #{parentId},
+            </if>
+            <if test="parentIds != null and parentIds != ''">
+                PARENT_IDS = #{parentIds},
+            </if>
+            <if test="name != null and name != ''">
+                NAME = #{name},
+            </if>
+            <if test="sort = 0">
+                SORT = #{sort},
+            </if>
+
+            HREF = #{href},
+
+            <if test="target != null and target != ''">
+                TARGET = #{target},
+            </if>
+            <if test="icon != null and icon != ''">
+                ICON = #{icon},
+            </if>
+            <if test="isShow != null and isShow != ''">
+                IS_SHOW = #{isShow},
+            </if>
+
+            PERMISSION = #{permission},
+
+
+            <if test="updater != null and updater != ''">
+                UPDATER = #{updater},
+            </if>
+
+            UPDATE_TIME = sysdate(),
+
+
+            REMARK = #{remark},
+
+            <if test="status != '' and status != null">
+                STATUS = #{status},
+            </if>
+        </set>
+        WHERE
+        ID = #{id}
+    </update>
+    <delete id="deleteMenu" parameterType="cn.sh.outer.model.security.ResourceMenu">
+        DELETE FROM T_MENU where ID = #{id}
+    </delete>
+    <select id="getMenu" parameterType="cn.sh.outer.model.security.ResourceMenu" resultMap="BaseResultMap">
+        SELECT * from T_MENU WHERE ID = #{id}
+    </select>
+    <select id="getMenuList" parameterType="cn.sh.outer.model.security.ResourceMenu" resultMap="BaseResultMap">
+        SELECT * from T_MENU WHERE 1=1
+        <if test="id > 0">
+            AND ID = #{id}
+        </if>
+        <if test="parentId >= 0">
+            AND PARENT_ID = #{parentId}
+        </if>
+        <if test="parentIds != null and parentIds != ''">
+            AND PARENT_IDS = #{parentIds}
+        </if>
+        <if test="name != null and name != ''">
+            AND NAME = #{name}
+        </if>
+        <if test="sort >0">
+            AND SORT = #{sort}
+        </if>
+        <if test="href != null and href != ''">
+            AND HREF = #{href}
+        </if>
+        <if test="target != null and target != ''">
+            AND TARGET = #{target}
+        </if>
+        <if test="icon != null and icon != ''">
+            AND ICON = #{icon}
+        </if>
+        <if test="isShow != null and isShow != ''">
+            AND IS_SHOW = #{isShow}
+        </if>
+        <if test="permission != null and permission != ''">
+            AND PERMISSION = #{permission}
+        </if>
+        <if test="creater != null and creater != ''">
+            AND CREATER = #{creater}
+        </if>
+        <if test="createTime != null">
+            AND CREATE_TIME = #{createTime}
+        </if>
+        <if test="updater != null and updater != ''">
+            AND UPDATER = #{updater}
+        </if>
+        <if test="updateTime != null">
+            AND UPDATE_TIME = #{updateTime}
+        </if>
+        <if test="remark != null and remark != ''">
+            AND REMARK = #{remark}
+        </if>
+        <if test="status != '' and status != null">
+            AND STATUS = #{status}
+        </if>
+        <if test="userId > 0 ">
+            AND ID IN (select rm.menu_id from t_Role_Menu rm where rm.role_id in (select ur.role_id from t_user_role ur
+            where ur.USER_ID = #{userId} ))
+        </if>
+        <if test="roleId > 0 ">
+            AND ID IN (select rm.menu_id from t_Role_Menu rm where rm.role_id = #{roleId})
+        </if>
+        ORDER BY PARENT_ID
+
+    </select>
+    <select id="getCascadeMenuList" parameterType="cn.sh.outer.model.security.ResourceMenu" resultMap="CascadeResultMap">
+        SELECT * from T_MENU WHERE 1=1
+        <if test="id >= 0">
+            AND ID = #{id}
+        </if>
+
+        AND PARENT_ID = 0
+
+        <if test="parentIds != null and parentIds != ''">
+            AND PARENT_IDS = #{parentIds}
+        </if>
+        <if test="name != null and name != ''">
+            AND NAME = #{name}
+        </if>
+        <if test="sort >0">
+            AND SORT = #{sort}
+        </if>
+        <if test="href != null and href != ''">
+            AND HREF = #{href}
+        </if>
+        <if test="target != null and target != ''">
+            AND TARGET = #{target}
+        </if>
+        <if test="icon != null and icon != ''">
+            AND ICON = #{icon}
+        </if>
+        <if test="isShow != null and isShow != ''">
+            AND IS_SHOW = #{isShow}
+        </if>
+        <if test="permission != null and permission != ''">
+            AND PERMISSION = #{permission}
+        </if>
+        <if test="creater != null and creater != ''">
+            AND CREATER = #{creater}
+        </if>
+        <if test="createTime != null">
+            AND CREATE_TIME = #{createTime}
+        </if>
+        <if test="updater != null and updater != ''">
+            AND UPDATER = #{updater}
+        </if>
+        <if test="updateTime != null">
+            AND UPDATE_TIME = #{updateTime}
+        </if>
+        <if test="remark != null and remark != ''">
+            AND REMARK = #{remark}
+        </if>
+        <if test="status != '' and status != null">
+            AND STATUS = #{status}
+        </if>
+        <if test="userId > 0 ">
+            AND ID IN (select rm.menu_id from t_Role_Menu rm where rm.role_id in (select ur.role_id from t_user_role ur
+            where ur.USER_ID = #{userId} ))
+        </if>
+        <if test="roleId > 0 ">
+            AND ID IN (select rm.menu_id from t_Role_Menu rm where rm.role_id = #{roleId})
+        </if>
+        ORDER BY ID
+
+    </select>
+    
+    <insert id="batchInsertRoleMenu" parameterType="hashmap">
+    
+        INSERT INTO T_ROLE_MENU(ROLE_ID,MENU_ID) VALUES
+        
+         <foreach item="item" index="index" collection="menuIds" separator=",">
+         
+         (#{roleId}, #{item})
+         
+         </foreach>  
+    </insert>
+
+    <insert id="insertRoleMenu" parameterType="cn.sh.outer.model.security.RoleMenu">
+        INSERT INTO T_ROLE_MENU(ROLE_ID,MENU_ID)
+        VALUES (#{roleId},#{menuId})
+    </insert>
+    
+    <delete id="deleteRoleMenu" parameterType="cn.sh.outer.model.security.RoleMenu">
+        DELETE from T_ROLE_MENU
+        WHERE
+        ROLE_ID = #{roleId}
+        <if test="menuId > 0">
+            and MENU_ID = #{menuId}
+        </if>
+
+    </delete>
+
+    <select id="getMenuListByUserId" parameterType="String" resultMap="BaseResultMap">
+		SELECT * from T_MENU m ,T_ROLE_MENU rm WHERE  m.id = rm.MENU_ID
+		AND  rm.ROLE_ID in (SELECT ROLE_ID from T_USER_ROLE where USER_ID = #{userId})
+
+	</select>
+    <select id="getRoleListByUserId" parameterType="String" resultMap="RoleResultMapper">
+		SELECT * from T_ROLE r WHERE r.ID IN (SELECT ROLE_ID FROM T_USER_ROLE WHERE USER_ID = #{userId})
+	</select>
+
+
+</mapper>

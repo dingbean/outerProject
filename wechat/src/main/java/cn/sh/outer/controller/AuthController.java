@@ -1,6 +1,7 @@
 package cn.sh.outer.controller;
 
 import cn.sh.outer.model.WxUser;
+import cn.sh.outer.util.PropertiesUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
@@ -33,20 +34,20 @@ public class AuthController {
     @ResponseBody
     public String login(@RequestBody WxUser wxUser, HttpServletRequest request){
         log.info("============================");
-        String resultPageURL = InternalResourceViewResolver.FORWARD_URL_PREFIX + "/html/main.html";
+        String resultPageURL = InternalResourceViewResolver.FORWARD_URL_PREFIX + PropertiesUtil.getProperty(PropertiesUtil.CONFIG, "project.mainPage");;
         String username = wxUser.getUserName();
         String password = wxUser.getPassword();
         //获取HttpSession中的验证码
-        String verifyCode = (String)request.getSession().getAttribute("verifyCode");
+//        String verifyCode = (String)request.getSession().getAttribute("verifyCode");
         //获取用户请求表单中输入的验证码
-        String submitCode = WebUtils.getCleanParam(request, "verifyCode");
-        System.out.println("用户[" + username + "]登录时输入的验证码为[" + submitCode + "],HttpSession中的验证码为[" + verifyCode + "]");
+//        String submitCode = WebUtils.getCleanParam(request, "verifyCode");
+//        System.out.println("用户[" + username + "]登录时输入的验证码为[" + submitCode + "],HttpSession中的验证码为[" + verifyCode + "]");
 //        if (StringUtils.isEmpty(submitCode) || !StringUtils.equals(verifyCode, submitCode.toLowerCase())){
 //            request.setAttribute("message_login", "验证码不正确");
 //            return resultPageURL;
 //        }
         UsernamePasswordToken token = new UsernamePasswordToken(username, password);
-        token.setRememberMe(true);
+//        token.setRememberMe(true);
         System.out.println("为了验证登录用户而封装的token为" + ReflectionToStringBuilder.toString(token, ToStringStyle.MULTI_LINE_STYLE));
         //获取当前的Subject
         Subject currentUser = SecurityUtils.getSubject();
