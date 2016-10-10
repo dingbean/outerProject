@@ -1,6 +1,7 @@
 package cn.sh.outer.dao;
 
-import cn.sh.ideal.manager.model.UserRole;
+
+import cn.sh.outer.model.UserRole;
 
 import java.math.BigDecimal;
 import java.util.List;

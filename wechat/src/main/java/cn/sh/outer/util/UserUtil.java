@@ -1,6 +1,6 @@
 package cn.sh.outer.util;
 
-import cn.sh.ideal.manager.security.SystemAuthorizingRealm;
+import cn.sh.outer.security.SystemAuthorizingRealm;
 import org.apache.commons.lang3.Validate;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.UnavailableSecurityManagerException;
@@ -15,8 +15,8 @@ import java.security.SecureRandom;
  * UserUtil
  * shrio 关于用户的工具类
  *
- * @author Genghc
- * @date 2015/7/13
+ * @author dk
+ * @date 2016/10/10
  */
 public class UserUtil {
     public static final int SALT_SIZE = 8;
@@ -105,24 +105,15 @@ public class UserUtil {
         return null;
     }
 
-    /**
-     * 获取当前登录的tenantCode
-     * @return
-     */
-    public static String getTenantCode(){
-        Subject subject = SecurityUtils.getSubject();
-        SystemAuthorizingRealm.Principal principal = (SystemAuthorizingRealm.Principal) subject.getPrincipal();
-        if (principal != null) {
-            return principal.getTenantCode();
-        }
-        return null;
-    }
+
 
     public static void main(String[] args) {
+        byte[] salt = generateSalt(SALT_SIZE);
+        System.out.println("___" +Encodes.encodeHex(salt));
         String a = "123456";
         String p1 = UserUtil.encryptPassword(a);
         System.out.println(p1);
-        System.out.println(UserUtil.validatePassword(a,"4c02533d648acc3ebcbfb11e5d77c6550de42d8e57126c4b5537f209"));
+        System.out.println(UserUtil.validatePassword(a,"b1b8e9a691921f99a68b31b3dbd35bc5380f82f6ff9d285c3f6eebd0"));
     }
 
 }

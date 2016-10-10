@@ -20,17 +20,14 @@ import javax.servlet.ServletResponse;
 @Service("systemLogoutFilter")
 public class SystemLogoutFilter extends LogoutFilter {
     private static final Logger logger = LoggerFactory.getLogger(SystemLogoutFilter.class);
-    @Value("#{config['isCas']}")
+    /*@Value("#{config['isCas']}")
     private String isCas ;
     @Value("#{config['casLoginoutUrl']}")
-    private String casLoginoutUrl;
+    private String casLoginoutUrl;*/
     @Override
     protected boolean preHandle(ServletRequest request, ServletResponse response) throws Exception {
-        if(StringUtils.isNotEmpty(isCas) && "true".equals(isCas)){
-            /*调用统一登录退出*/
-            setRedirectUrl(casLoginoutUrl);
-            UserUtil.getSubject().logout();
-        }
+        logger.info("use WEBSSO logout....");
+        UserUtil.getSubject().logout();
         return super.preHandle(request, response);
     }
 }

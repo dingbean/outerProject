@@ -1,4 +1,4 @@
-package cn.sh.outer.dao;
+package cn.sh.outer.security.shiro.dao;
 
 import org.apache.shiro.session.Session;
 import org.apache.shiro.session.mgt.eis.SessionDAO;
@@ -9,7 +9,7 @@ import java.util.Collection;
  * SessionDao
  *
  * @author dk
- * @date 2016/10/9
+ * @date 2016/10/10
  */
 public interface SessionDao extends SessionDAO{
     /**

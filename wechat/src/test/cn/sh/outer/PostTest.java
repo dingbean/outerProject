@@ -132,12 +132,12 @@ public class PostTest {
 
         final HttpClient client = new HttpClient(connectionManager);
         ThreadTest tt = new ThreadTest(client);
-        ExecutorService executor = Executors.newFixedThreadPool(5);
-        for (int i = 0; i <50 ; i++) {
+        ExecutorService executor = Executors.newFixedThreadPool(2);
+        for (int i = 0; i <500 ; i++) {
             executor.execute(tt);
         }
         try {
-            Thread. sleep(1000);
+            Thread. sleep(10000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

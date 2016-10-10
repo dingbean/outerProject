@@ -41,12 +41,12 @@ public class ThreadTest implements Runnable {
             System.out.println("===========");
             try {
                 int statusCode=0;
-                System. out.println( "url====http://localhost:8080/wechat/wx/controller"  );
-                PostMethod postMethod = new PostMethod("http://localhost:8080/wechat/wx/controller");
+                System. out.println( "url====http://localhost:8081/wechat/wx/controller"  );
+                PostMethod postMethod = new PostMethod("http://localhost:8081/wechat/wx/controller");
 
                     statusCode = client.executeMethod(postMethod);
                     System. out.println( "_______sleep" + statusCode );
-//                    Thread. sleep(3000);//10s
+//                    Thread. sleep(1000);//10s
                     postMethod.releaseConnection();
 
 //                PostMethodTest pmt = new PostMethodTest();

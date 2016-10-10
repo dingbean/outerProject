@@ -1,7 +1,6 @@
 package cn.sh.outer.service.impl;
 
 import cn.sh.outer.dao.RoleMenuDao;
-import cn.sh.outer.dao.SessionDao;
 import cn.sh.outer.dao.UserDao;
 import cn.sh.outer.model.User;
 import cn.sh.outer.model.security.ResourceMenu;
