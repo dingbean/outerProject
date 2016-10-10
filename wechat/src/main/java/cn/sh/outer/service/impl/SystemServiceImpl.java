@@ -5,6 +5,7 @@ import cn.sh.outer.dao.UserDao;
 import cn.sh.outer.model.User;
 import cn.sh.outer.model.security.ResourceMenu;
 import cn.sh.outer.model.security.Role;
+import cn.sh.outer.security.shiro.dao.SessionDao;
 import cn.sh.outer.service.SystemService;
 import org.apache.shiro.session.Session;
 import org.springframework.beans.factory.annotation.Autowired;

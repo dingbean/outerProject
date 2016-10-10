@@ -35,8 +35,8 @@ import java.util.List;
  * SystemAuthorizingRealm
  * 系统安全认证实现类
  *
- * @author Genghc
- * @date 2015/7/8
+ * @author dk
+ * @date 2016/10/10
  */
 @Service("systemAuthorizingRealm")
 public class SystemAuthorizingRealm extends AuthorizingRealm {
@@ -59,9 +59,7 @@ public class SystemAuthorizingRealm extends AuthorizingRealm {
             e.printStackTrace();
         } finally {
         }
-
     }
-
 
     /**
      * 认证回调，登录时调用
