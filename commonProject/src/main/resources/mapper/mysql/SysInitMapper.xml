@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.sh.outer.dao.SysInitMapper" >
+
+  
+  <resultMap id="sysRuleMap" type="cn.sh.outer.model.SysRule" >
+    <id column="ID" property="id" jdbcType="INTEGER" />
+    <result column="RULE_NAME" property="ruleName" jdbcType="VARCHAR" />
+    <result column="RULE_TYPE" property="ruleType" jdbcType="VARCHAR" />
+    <result column="RULE_CODE" property="ruleCode" jdbcType="VARCHAR" />
+    <result column="RULE_METHOD" property="ruleMethod" jdbcType="VARCHAR" />
+    <result column="IS_GLOBAL" property="isGlobal" jdbcType="VARCHAR" />
+    <result column="INTERFACE_URL" property="interfaceUrl" jdbcType="VARCHAR" />
+    <result column="REMARK" property="remark" jdbcType="VARCHAR" />
+  </resultMap>
+
+  <!-- 获取系统参数 --> 
+	<select id="getSysParam" resultType="cn.sh.outer.model.SysParam">
+	 	select auto_id id,
+	 		   param_code paramCode,
+	 		   param_value paramValue,
+	 		   param_info paramInfo,
+	 		   param_desc paramDesc,
+	 		   order_type orderType,
+	 		   remark
+	    from t_sys_param
+	</select>
+
+   <!--  获取redis配置信息 -->
+  <select id="getRedisParam" resultType="cn.sh.outer.model.SysParam">
+		select auto_id id,param_code paramCode,param_value paramValue,param_info paramInfo,
+	 		   param_desc paramDesc,order_type orderType,remark
+	    from t_sys_param
+	    where param_code like '%REDIS%'
+	</select>
+	<!-- 根据id获取规则信息 -->
+	<select id="getRuleById" resultMap="sysRuleMap" parameterType="string">
+		SELECT * FROM T_SYS_RULE
+		WHERE ID = #{id,jdbcType=VARCHAR}
+	</select>
+	<!-- 根据code获取规则信息 -->
+	<select id="getRuleByCode" resultMap="sysRuleMap" parameterType="string">
+		SELECT * FROM T_SYS_RULE
+		WHERE RULE_CODE = #{code,jdbcType=VARCHAR}
+	</select>
+
+</mapper>
