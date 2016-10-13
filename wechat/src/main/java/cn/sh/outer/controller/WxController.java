@@ -1,10 +1,12 @@
 package cn.sh.outer.controller;
 
+import cn.sh.outer.service.TestService;
 import cn.sh.outer.util.IdGenerate;
 import cn.sh.outer.util.SignUtil;
 import org.aspectj.bridge.MessageUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.IdGenerator;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,10 +29,15 @@ public class WxController {
 
     private static Logger log = LoggerFactory.getLogger(WxController.class);
 
+    @Autowired
+    private TestService testService;
+
     @RequestMapping(value = "/controller")
     @ResponseBody
     public String testController(HttpServletRequest request){
-        System.out.println("idNum=" + IdGenerate.getIdNum());
+//        System.out.println("idNum=" + IdGenerate.getIdNum());
+        log.info("#######################");
+        testService.testRedis("123456");
         return "200";
     }
 

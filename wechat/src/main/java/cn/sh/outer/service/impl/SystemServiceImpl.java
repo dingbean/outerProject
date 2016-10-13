@@ -1,5 +1,6 @@
 package cn.sh.outer.service.impl;
 
+import cn.sh.outer.dao.RedisDao;
 import cn.sh.outer.dao.RoleMenuDao;
 import cn.sh.outer.dao.UserDao;
 import cn.sh.outer.model.User;
@@ -29,6 +30,9 @@ public class SystemServiceImpl implements SystemService {
     @Autowired
     private RoleMenuDao roleMenuDao;
     private String sessionKeyPrefix = "shiro_session_";
+
+    @Autowired
+    private RedisDao redisDao;
 
     @Override
     public List<ResourceMenu> getMenuList(ResourceMenu resourceMenu) {
