@@ -2,6 +2,7 @@ package cn.sh.outer.dao;
 
 import cn.sh.outer.model.SysParam;
 import cn.sh.outer.model.SysRule;
+import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
 
@@ -26,6 +27,10 @@ public interface SysInitMapper {
 	 * 
 	 * @return
 	 */
+	@Select("select auto_id id,param_code paramCode,param_value paramValue,param_info paramInfo,\n" +
+			"\t \t\t   param_desc paramDesc,order_type orderType,remark\n" +
+			"\t    from t_sys_param\n" +
+			"\t    where param_code like '%REDIS%'")
 	public List<SysParam> getRedisParam();
 	
 	/**

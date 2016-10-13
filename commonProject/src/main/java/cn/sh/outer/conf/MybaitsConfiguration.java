@@ -11,6 +11,7 @@ import org.mybatis.spring.transaction.SpringManagedTransactionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.ImportResource;
 
 /**
  * mybatis configuration
@@ -20,6 +21,7 @@ import org.springframework.context.annotation.Configuration;
  * @since v1.1.6 
  *
  */
+
 @Configuration
 public class MybaitsConfiguration {
 	/** 
@@ -29,7 +31,7 @@ public class MybaitsConfiguration {
 	private DataSource dataSource;
 	
 	@Bean
-	public SqlSessionFactory sqlSssionFactory(){
+	public SqlSessionFactory sqlSessionFactory(){
 		Environment environment = new Environment("COMMON", new SpringManagedTransactionFactory(), dataSource);
 
 		org.apache.ibatis.session.Configuration configuration = new org.apache.ibatis.session.Configuration(environment);
@@ -41,7 +43,7 @@ public class MybaitsConfiguration {
 	
 	@Bean
 	public SqlSessionTemplate sqlSessionTemplate(){
-		return new SqlSessionTemplate(sqlSssionFactory());
+		return new SqlSessionTemplate(sqlSessionFactory());
 	}
 
 	public DataSource getDataSource() {

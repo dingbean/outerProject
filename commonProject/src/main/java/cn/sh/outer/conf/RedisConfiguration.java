@@ -39,7 +39,7 @@ import redis.clients.jedis.JedisShardInfo;
 @Configuration
 public class RedisConfiguration {
 	private static Logger logger = LoggerFactory.getLogger(RedisConfiguration.class);
-	
+
 	private static final String REDIS_MODEL = "REDIS_MODEL";
 	private static final String REDIS_MASTER_NAME = "REDIS_MASTER_NAME";
 	private static final String REDIS_HOST = "REDIS_HOST";
@@ -196,7 +196,7 @@ public class RedisConfiguration {
 		redisTemplate.setConnectionFactory(jedisConnectionFactory());
 		redisTemplate.setKeySerializer(rss);
 		redisTemplate.setHashKeySerializer(rss);
-		
+		redisTemplate.setValueSerializer(rss);
 		
 		return redisTemplate;
 	}
@@ -209,6 +209,6 @@ public class RedisConfiguration {
 		return rmlc;
 	}
 	
-	
+
 	
 }
