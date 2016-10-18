@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>cn.sh.outer</groupId>
+        <artifactId>base_project</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <artifactId>sample_web</artifactId>
+    <packaging>war</packaging>
+
+    <build>
+        <finalName>sample_web</finalName>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+        <filters>
+            <filter>src/main/resources/conf/${env}/app-${env}.properties</filter>
+            <filter>src/main/resources/conf/${env}/jdbc-${db}-${env}.properties</filter>
+        </filters>
+
+    </build>
+    <profiles>
+        <profile>
+            <id>dev</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <env>dev</env>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>mysql</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <db>mysql</db>
+            </properties>
+        </profile>
+        <profile>
+            <id>oracle</id>
+            <!-- <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation> -->
+            <properties>
+                <db>oracle</db>
+            </properties>
+        </profile>
+    </profiles>
+</project>
