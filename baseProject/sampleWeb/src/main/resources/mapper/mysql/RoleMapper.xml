@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.sh.outer.dao.RoleDao">
+	<resultMap id="BaseResultMap" type="cn.sh.outer.model.security.Role">
+		<id column="ID" property="id" jdbcType="DECIMAL" />
+		<result column="ROLE_NAME" property="roleName" jdbcType="VARCHAR" />
+		<result column="ROLE_CODE" property="roleCode" jdbcType="VARCHAR" />
+		<result column="STATUS" property="status" jdbcType="VARCHAR" />
+		<result column="SUPERIOR_ID" property="superiorId" jdbcType="VARCHAR" />
+		<result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+		<result column="UPDATE_TIME" property="updateTime" jdbcType="TIMESTAMP" />
+	</resultMap>
+
+	<insert id="insert" parameterType="cn.sh.outer.model.req.RoleInfo" useGeneratedKeys="true" keyProperty="id">
+		insert into T_ROLE
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="roleName != null and roleName != ''">
+				ROLE_NAME,
+			</if>
+			<if test="roleCode != null and roleCode != ''">
+				ROLE_CODE,
+			</if>
+			<if test="status != null and status != ''">
+				STATUS,
+			</if>
+			CREATE_TIME
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="roleName != null and roleName != '' ">
+				#{roleName,jdbcType=VARCHAR},
+			</if>
+			<if test="roleCode != null and roleCode != ''">
+				#{roleCode,jdbcType=VARCHAR},
+			</if>
+			<if test="status != null and status != ''">
+				#{status,jdbcType=VARCHAR},
+			</if>
+			now()
+		</trim>
+	</insert>
+
+</mapper>

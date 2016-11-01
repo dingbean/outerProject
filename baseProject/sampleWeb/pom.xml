@@ -5,10 +5,75 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>cn.sh.outer</groupId>
-        <artifactId>sample_parent</artifactId>
+        <artifactId>sample</artifactId>
         <version>1.0</version>
     </parent>
     <artifactId>sample_web</artifactId>
     <packaging>war</packaging>
 
+    <build>
+        <finalName>sampleWeb</finalName>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+        <filters>
+            <filter>src/main/resources/conf/${env}/app-${env}.properties</filter>
+            <filter>src/main/resources/conf/${env}/jdbc-${db}-${env}.properties</filter>
+        </filters>
+        <plugins>
+            <!--跳过test begin-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <skip>true</skip>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.7</source>
+                    <target>1.7</target>
+                    <encoding>UTF-8</encoding>
+                    <compilerArguments>
+                        <extdirs>src\main\webapp\WEB-INF\lib</extdirs>
+                    </compilerArguments>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+    <profiles>
+        <profile>
+            <id>dev</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <env>dev</env>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>mysql</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <db>mysql</db>
+            </properties>
+        </profile>
+        <profile>
+            <id>oracle</id>
+            <!-- <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation> -->
+            <properties>
+                <db>oracle</db>
+            </properties>
+        </profile>
+    </profiles>
 </project>

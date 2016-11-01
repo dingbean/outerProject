@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../../css/bootstrap.min.css"/>
+    <!-- bs-extend扩展了下拉菜单 -->
+    <link rel="stylesheet" href="../../css/bs-extend.css"/>
+    <script type="text/javascript" src="../../js/jquery.min.js"></script>
+    <script type="text/javascript" src="../../js/bootstrap.min.js"></script>
+    <title>Title</title>
+</head>
+<body>
+    <nav class="nav navbar-default navbar-fixed-top" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <!-- 对应下面的collapse标题响应式布局，隐藏按钮 -->
+                <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="#" class="navbar-brand">
+                    <img src="../../image/logox.png" style="height:50px;margin-top: -15px;">
+                </a>
+            </div>
+            <!-- collapse标题响应式布局 -->
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="#">首页</a></li>
+                    <li><a href="#">IT</a></li>
+                    <li><a href="#">娱乐</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">下拉菜单 <span class="caret"></span></a>
+                        <ul class="bs-menu dropdown-menu">
+                            <li class="dropdown-submenu">
+                                <a href="#">下拉菜单1</a>
+                                <ul class="bs-submenu dropdown-menu">
+                                    <li><a href="#">下拉菜单1_1</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="#">下拉菜单1_2</a></li>
+                                </ul>
+                            </li>
+                            <li class="divider"></li>
+                            <li><a href="#">下拉菜单2</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">下拉菜单3</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <div class="navbar-form navbar-right">
+                    <input type="text" class="form-control" placeholder="请输入关键字"/>
+                    <button class="btn btn-primary">搜索</button>
+                    <a href="#" class="navbar-link">登录</a>
+                    <a href="#" class="navbar-link">注册</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 解决头部fixed固定后 正文隐藏-->
+    <div style="height:50px"></div>
+
+    <div class="container">
+        <h1 class="page-header"><span class="glyphicon glyphicon-user"></span> 登录</h1>
+        <form class="form-horizontal">
+            <div class="form-group">
+                <div class="col-md-5">
+                    <input type="text" class="form-control" placeholder="用户名"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-5">
+                    <input type="text" class="form-control" placeholder="密码"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-5">
+                    <button class="btn btn-primary">登录</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <ul id="tabTest" class="nav nav-tabs">
+                    <li class="active"><a href="#tab1" data-toggle="tab">tab标签1</a></li>
+                    <li><a href="#tab2" data-toggle="tab">tab标签2</a></li>
+                    <li><a href="#tab3" data-toggle="tab">tab标签3</a></li>
+                </ul>
+            </div>
+            <div class="col-md-12">
+                <div class="tab-content">
+                    <div class="tab-pane fade in active" id="tab1">
+                        <p><a href="#">是德国法国的话推荐个护的功能慢慢感觉，回到凤凰大概花费估计</a><span class="pull-right">2016-11-1 12:00:00</span></p>
+                        <p><a href="#">是德国法国的话推荐个护的功能慢慢感觉，回到凤凰大概花费估计</a><span class="pull-right">2016-11-1 12:00:00</span></p>
+                        <p><a href="#">是德国法国的话推荐个护的功能慢慢感觉，回到凤凰大概花费估计</a><span class="pull-right">2016-11-1 12:00:00</span></p>
+                        <p><a href="#">是德国法国的话推荐个护的功能慢慢感觉，回到凤凰大概花费估计</a><span class="pull-right">2016-11-1 12:00:00</span></p>
+                        <p><a href="#">是德国法国的话推荐个护的功能慢慢感觉，回到凤凰大概花费估计</a><span class="pull-right">2016-11-1 12:00:00</span></p>
+                    </div>
+                    <div class="tab-pane fade" id="tab2">
+                        <p>幸福的更富有苦苦</p>
+                        <p>幸福的更富有苦苦</p>
+                        <p>幸福的更富有苦苦</p>
+                        <p>幸福的更富有苦苦</p>
+                        <p>幸福的更富有苦苦</p>
+                    </div>
+                    <div class="tab-pane fade" id="tab3">
+                        <p>AAAAAAAAAAAAAAAAAAAAAAAAAAAA</p>
+                        <p>AAAAAAAAAAAAAAAAAAAAAAAAAAAA</p>
+                        <p>AAAAAAAAAAAAAAAAAAAAAAAAAAAA</p>
+                        <p>AAAAAAAAAAAAAAAAAAAAAAAAAAAA</p>
+                        <p>AAAAAAAAAAAAAAAAAAAAAAAAAAAA</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <ul class="breadcrumb">
+                    <li><a href="#">开发语言</a></li>
+                    <li><a href="#">java</a></li>
+                    <li><a href="#" class="text-muted">书籍</a></li>
+                </ul>
+            </div>
+            <div class="col-md-4">
+                <div class="thumbnail">
+                    <img src="../../image/test4.jpg">
+                    <div class="caption">
+                        <h3><a href="#">图片标题</a><p style="float: right;font-size:10px;line-height: 25px;">12:00:00</p></h3>
+                        <p style="font-size:20px;line-height: 20px;">介绍</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="thumbnail">
+                    <img src="../../image/test4.jpg">
+                    <div class="caption">
+                        <h3><a href="#">图片标题</a><p style="float: right;font-size:10px;line-height: 25px;">12:00:00</p></h3>
+                        <p style="font-size:20px;line-height: 20px;">介绍</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="thumbnail">
+                    <img src="../../image/test4.jpg">
+                    <div class="caption">
+                        <h3><a href="#">图片标题</a><p style="float: right;font-size:10px;line-height: 25px;">12:00:00</p></h3>
+                        <p style="font-size:20px;line-height: 20px;">介绍</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                <div class="thumbnail">
+                    <img src="../../image/test4.jpg">
+                    <div class="caption">
+                        <h3><a href="#">图片标题</a><p style="float: right;font-size:10px;line-height: 25px;">12:00:00</p></h3>
+                        <p style="font-size:20px;line-height: 20px;">介绍</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="col-md-6">
+                    <div class="thumbnail">
+                        <img src="../../image/test4.jpg">
+                        <div class="caption">
+                            <h3><a href="#">图片标题</a><p style="float: right;font-size:10px;line-height: 25px;">12:00:00</p></h3>
+                            <p style="font-size:20px;line-height: 20px;">介绍</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="page-header">
+                        <h2>主题介绍</h2>
+                    </div>
+                    <p>小标题介绍</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="col-md-3">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    推荐文章
+                    <a href="#" class="text-muted pull-right"> >> </a>
+                </div>
+                <div class="panel-body">
+                    <strong class="panel-title">小标题</strong>
+                    <p>对方会发给积分结果看了一领域才给你发没发过就好了更加宽广的凤凰是个大水复活节孤苦和</p>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    推荐视频
+                </div>
+                <ul class="media-list" style="margin-top: 5px;margin-left: 5px;">
+                    <li style="margin-top: 5px;">
+                        <div class="media">
+                            <div class="media-left">
+                                <img  class="img-thumbnail" style="height:100px;width:100%" src="../../image/test3.jpg">
+                            </div>
+                            <div class="media-body">
+                                <div class="media-heading">
+                                    <strong>使得根深蒂固</strong>
+                                    <p>是高帅富和特特特和特特特特河而法律的咖啡馆里的咖啡里的疯狂</p>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li style="margin-top: 5px;">
+                        <div class="media">
+                            <div class="media-left">
+                                <img  class="img-thumbnail" style="height:100px;width:100%" src="../../image/test3.jpg">
+                            </div>
+                            <div class="media-body">
+                                <div class="media-heading">
+                                    <strong>使得根深蒂固</strong>
+                                    <p>是高帅富和特特特和特特特特河而法律的咖啡馆里的咖啡里的疯狂</p>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    推荐文章
+                </div>
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <a href="#" class="text-muted">睡得更舒服更到凤凰的话估计</a>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="#" class="text-muted">睡得更舒服更到凤凰的话估计</a>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="#" class="text-muted">睡得更舒服更到凤凰的话估计</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-9">
+            <div class="list-group">
+                <div class="list-group-item" style="border:0;">
+                    <h4><a href="#">列表组正文标题</a></h4>
+                    <p class="text-muted">
+                        <small>发布时间:12:00:00</small>
+                        <small class="pull-right">点击量:<span class="badge">1000</span></small>
+                    </p>
+                    <p class="text-muted">
+                        是否感受感受感受时光是否感受感受感受时光是否感受感受感受时光是否感受感受感受时光
+                        是否感受感受感受时光是否感受感受感受时光是否感受感受感受时光是否感受感受感受时光
+                        是否感受感受感受时光是否感受感受感受时光是否感受感受感受时光是否感受感受感受时光
+                        是否感受感受感受时光是否感受感受感受时光是否感受感受感受时光是否感受感受感受时光
+                        是否感受感受感受时光是否感受感受感受时光是否感受感受感受时光是否感受感受感受时光
+                    </p>
+                    <p>
+                        <span class="badge">关键字1</span>&nbsp;<span class="badge">关键字2</span>&nbsp;<span class="badge">关键字3</span>
+                    </p>
+                </div>
+                <div style="border:1px dashed #ddd;"></div>
+                <div class="list-group-item" style="border:0;">
+                    <h4><a href="#">列表组正文标题</a></h4>
+                    <p class="text-muted">
+                        <small>发布时间:12:00:00</small>
+                        <small class="pull-right">点击量:<span class="badge">1000</span></small>
+                    </p>
+                    <p class="text-muted">
+                        是否感受感受感受时光是否感受感受感受时光是否感受感受感受时光是否感受感受感受时光
+                        是否感受感受感受时光是否感受感受感受时光是否感受感受感受时光是否感受感受感受时光
+                        是否感受感受感受时光是否感受感受感受时光是否感受感受感受时光是否感受感受感受时光
+                        是否感受感受感受时光是否感受感受感受时光是否感受感受感受时光是否感受感受感受时光
+                        是否感受感受感受时光是否感受感受感受时光是否感受感受感受时光是否感受感受感受时光
+                    </p>
+                    <p>
+                        <span class="badge">关键字1</span>&nbsp;<span class="badge">关键字2</span>&nbsp;<span class="badge">关键字3</span>
+                    </p>
+                </div>
+                <div style="border:1px dashed #ddd;"></div>
+                <div class="list-group-item" style="border:0;">
+                    <h4><a href="#">列表组正文标题</a></h4>
+                    <p class="text-muted">
+                        <small>发布时间:12:00:00</small>
+                        <small class="pull-right">点击量:<span class="badge">1000</span></small>
+                    </p>
+                    <p class="text-muted">
+                        是否感受感受感受时光是否感受感受感受时光是否感受感受感受时光是否感受感受感受时光
+                        是否感受感受感受时光是否感受感受感受时光是否感受感受感受时光是否感受感受感受时光
+                        是否感受感受感受时光是否感受感受感受时光是否感受感受感受时光是否感受感受感受时光
+                        是否感受感受感受时光是否感受感受感受时光是否感受感受感受时光是否感受感受感受时光
+                        是否感受感受感受时光是否感受感受感受时光是否感受感受感受时光是否感受感受感受时光
+                    </p>
+                    <p>
+                        <span class="badge">关键字1</span>&nbsp;<span class="badge">关键字2</span>&nbsp;<span class="badge">关键字3</span>
+                    </p>
+                </div>
+                <div style="border:1px dashed #ddd;"></div>
+                <div class="list-group-item" style="border:0;">
+                    <h4><a href="#">列表组正文标题</a></h4>
+                    <p class="text-muted">
+                        <small>发布时间:12:00:00</small>
+                        <small class="pull-right">点击量:<span class="badge">1000</span></small>
+                    </p>
+                    <p class="text-muted">
+                        是否感受感受感受时光是否感受感受感受时光是否感受感受感受时光是否感受感受感受时光
+                        是否感受感受感受时光是否感受感受感受时光是否感受感受感受时光是否感受感受感受时光
+                        是否感受感受感受时光是否感受感受感受时光是否感受感受感受时光是否感受感受感受时光
+                        是否感受感受感受时光是否感受感受感受时光是否感受感受感受时光是否感受感受感受时光
+                        是否感受感受感受时光是否感受感受感受时光是否感受感受感受时光是否感受感受感受时光
+                    </p>
+                    <p>
+                        <span class="badge">关键字1</span>&nbsp;<span class="badge">关键字2</span>&nbsp;<span class="badge">关键字3</span>
+                    </p>
+                </div>
+                <div style="border:1px dashed #ddd;"></div>
+                <div class="list-group-item" style="border:0;">
+                    <h4><a href="#">列表组正文标题</a></h4>
+                    <p class="text-muted">
+                        <small>发布时间:12:00:00</small>
+                        <small class="pull-right">点击量:<span class="badge">1000</span></small>
+                    </p>
+                    <p class="text-muted">
+                        是否感受感受感受时光是否感受感受感受时光是否感受感受感受时光是否感受感受感受时光
+                        是否感受感受感受时光是否感受感受感受时光是否感受感受感受时光是否感受感受感受时光
+                        是否感受感受感受时光是否感受感受感受时光是否感受感受感受时光是否感受感受感受时光
+                        是否感受感受感受时光是否感受感受感受时光是否感受感受感受时光是否感受感受感受时光
+                        是否感受感受感受时光是否感受感受感受时光是否感受感受感受时光是否感受感受感受时光
+                    </p>
+                    <p>
+                        <span class="badge">关键字1</span>&nbsp;<span class="badge">关键字2</span>&nbsp;<span class="badge">关键字3</span>
+                    </p>
+                </div>
+                <div style="border:1px dashed #ddd;"></div>
+                <div class="text-center">
+                    <ul class="pagination">
+                        <li><a href="#">&laquo;</a></li>
+                        <li><a href="#">1</a></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#">4</a></li>
+                        <li><a href="#">5</a></li>
+                        <li><a href="#">&raquo;</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+<script>
+//    $("#tabTest a[href='#tab2']").tab("show");
+//    $("#tabTest a:last").tab("show");
+    $("#tabTest li:eq(1) a").tab("show");
+</script>
+</body>
+</html>

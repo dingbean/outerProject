@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.sh.outer.dao.RoleMenuDao">
+    <resultMap id="BaseResultMap" type="cn.sh.outer.model.security.ResourceMenu">
+        <id column="ID" property="id" jdbcType="DECIMAL"/>
+        <result column="PARENT_ID" property="parentId" jdbcType="DECIMAL"/>
+        <result column="PARENT_IDS" property="parentIds" jdbcType="VARCHAR"/>
+        <result column="NAME" property="name" jdbcType="VARCHAR"/>
+        <result column="SORT" property="sort" jdbcType="DECIMAL"/>
+        <result column="HREF" property="href" jdbcType="VARCHAR"/>
+        <result column="TARGET" property="target" jdbcType="VARCHAR"/>
+        <result column="ICON" property="icon" jdbcType="VARCHAR"/>
+        <result column="IS_SHOW" property="isShow" jdbcType="VARCHAR"/>
+        <result column="PERMISSION" property="permission" jdbcType="VARCHAR"/>
+        <result column="CREATER" property="creater" jdbcType="VARCHAR"/>
+        <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP"/>
+        <result column="UPDATER" property="updater" jdbcType="VARCHAR"/>
+        <result column="UPDATE_TIME" property="updateTime" jdbcType="TIMESTAMP"/>
+        <result column="REMARK" property="remark" jdbcType="VARCHAR"/>
+        <result column="STATUS" property="status" jdbcType="VARCHAR"/>
+        <!--<collection property="children" column="ID" select="getChildrenMenus"/>-->
+    </resultMap>
+
+    <insert id="insert" parameterType="cn.sh.outer.model.security.RoleMenu" useGeneratedKeys="true" keyProperty="id">
+        insert into T_ROLE_MENU(MENU_ID,ROLE_ID)
+        values(#{menuId,jdbcType=VARCHAR},#{roleId,jdbcType=VARCHAR})
+    </insert>
+
+
+</mapper>
